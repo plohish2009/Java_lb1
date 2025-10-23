@@ -4,12 +4,11 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        // Решение для Windows консоли
         String encoding;
         String os = System.getProperty("os.name").toLowerCase();
         
         if (os.contains("win")) {
-            encoding = "CP866"; // Кодировка русской Windows консоли
+            encoding = "CP866";
         } else {
             encoding = "UTF-8";
         }
@@ -18,7 +17,6 @@ public class App {
         System.setOut(new PrintStream(System.out, true, encoding));
 
         Biblioteka bibl = Biblioteka.loadFromFile();
-    //     System.out.println("Hello, popa");
     //    {
     //         Book book1 = new Book("Три мушкетёра", "Александр Дюма", 1844, "classics/duma1.pdf");
     //         Book book2 = new Book("Двадцать лет спустя", "Александр Дюма", 1845, "classics/duma2.epub");
@@ -73,7 +71,6 @@ public class App {
     //         bibl.add_book(book21);
     //         bibl.add_book(book22);
     //     }
-    //     bibl.list();
         
         InputStreamReader isr = new InputStreamReader(System.in, encoding);
         Scanner scanner = new Scanner(isr);
@@ -93,7 +90,7 @@ public class App {
             scanner.nextLine();
                 if (choice == 1)
                 {
-                    String name;//Book book18 = new Book("Убить пересмешника", "Харпер Ли", 1960, "classics/lee1.pdf");
+                    String name;
                     String author;
                     int year;
                     String path;
@@ -105,10 +102,10 @@ public class App {
                     while (!scanner.hasNextInt())
                     {
                         System.out.println("Ошибка! Введите число: ");
-                        scanner.next(); // очищаем некорректный ввод
+                        scanner.next(); 
                     }
                     year = scanner.nextInt();
-                    scanner.nextLine(); // очистка буфера
+                    scanner.nextLine();
                     System.out.println("Укажите путь до книги: ");
                     path = scanner.nextLine();
                     Book boka = new Book(name, author, year, path);
@@ -137,7 +134,7 @@ public class App {
                     System.out.print("Введите значение для поиска: ");
                     String search = scanner.nextLine();
                     System.out.println(search);
-                    System.out.print("Введите атрибут (0-название, 1-автор, 2-год): ");
+                    System.out.print("Выберите атрибут (0-название, 1-автор, 2-год): ");
                     int attribute = scanner.nextInt();
                     bibl.find_with_atr(search, attribute);
                 }
@@ -155,9 +152,6 @@ public class App {
                 else{System.out.println("Неверный выбор!");}               
             }
         scanner.close();
-        //bibl.find("Война и мир");
-        bibl.find_with_atr("Лев Толстой", 1);
-        //bibl.savetofile();
         
     }
 }
